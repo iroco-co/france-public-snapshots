@@ -1,0 +1,82 @@
+<!DOCTYPE html><html><head>
+    <title>Captcha</title>
+    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <script>function submitForm() {
+  var http = new XMLHttpRequest();
+  var url = '/.well-known/baleen/captcha/check';
+  captcha = new FormData(document.getElementById("captcha-form")).get('g-recaptcha-response')
+  var params = 'g-recaptcha-response=' + encodeURIComponent(captcha) + '&captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKXSrKiblB2mllzXsK8smsmlzy9TMeMoXuTGag9aY_6ALVyOHznSHQK2bsww-cDyZE8';
+  http.onload = function () {
+    if (http.readyState === 4) {
+      document.location.reload()
+    }
+  };
+  http.open('POST', url, true);
+  http.send(params)
+}
+var onloadCallback = function () {
+  var xmlHttpRequest = new XMLHttpRequest();
+  xmlHttpRequest.open('POST', '/.well-known/baleen/captcha/check-js');
+  xmlHttpRequest.send('captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKXSrKiblB2mllzXsK8smsmlzy9TMeMoXuTGag9aY_6ALVyOHznSHQK2bsww-cDyZE8');
+};
+</script><script src="https://js.hcaptcha.com/1/api.js?onload=onloadCallback" async="" defer=""></script>
+    <script src="/.well-known/baleen/captcha/js/animation.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&amp;display=swap" rel="stylesheet">
+    <link href="/.well-known/baleen/captcha/assets/style.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="main-container">
+    <div class="header" style="visibility:hidden">
+        <!-- Locale selection to be handled at a later stage. We need to regenerate the page with the correct recaptcha sitekey -->
+        <a class="locale-select" href="#">
+            <span>FR</span>
+            <div class="arrow"></div>
+        </a>
+        <div class="choice-container">
+            <div class="choice hide">
+                <a href="/.well-known/baleen/captcha/en/captcha.html">English</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="captcha-body">
+            <div class="captcha-card">
+                <img src="/.well-known/baleen/captcha/assets/logo.svg">
+                <div class="captcha-message-1">
+                    L'accès au site<br>
+                    <span id="website"></span><br>
+                    est protégé par Baleen
+                </div>
+                <div class="separator"></div>
+                <div class="captcha-message-2">
+            <span>Afin de nous assurer que vous n'êtes pas un robot et de vous permettre d'accéder au contenu demandé,
+              merci de répondre
+              au challenge suivant :</span>
+                </div>
+                <div class="captcha-container">
+                    <form id="captcha-form" action="" method="POST">
+    <div class="g-recaptcha" data-sitekey="f6af350b-e1f0-4be9-847a-de731e69489a" data-callback="submitForm">
+    <iframe src="https://newassets.hcaptcha.com/captcha/v1/257d501/static/hcaptcha.html#frame=checkbox&amp;id=0wz1kxng931n&amp;host=franceconnect.gouv.fr&amp;sentry=true&amp;reportapi=https%3A%2F%2Faccounts.hcaptcha.com&amp;recaptchacompat=true&amp;custom=false&amp;hl=en&amp;tplinks=on&amp;pstissuer=https%3A%2F%2Fpst-issuer.hcaptcha.com&amp;sitekey=f6af350b-e1f0-4be9-847a-de731e69489a&amp;theme=light&amp;origin=https%3A%2F%2Ffranceconnect.gouv.fr" tabindex="0" frameborder="0" scrolling="no" allow="private-state-token-issuance 'src'; private-state-token-redemption 'src'" title="Widget containing checkbox for hCaptcha security challenge" data-hcaptcha-widget-id="0wz1kxng931n" data-hcaptcha-response="" style="pointer-events: auto; background-color: rgba(255, 255, 255, 0); width: 303px; height: 78px; overflow: hidden;"></iframe><textarea id="g-recaptcha-response-0wz1kxng931n" name="g-recaptcha-response" style="display: none;"></textarea><textarea id="h-captcha-response-0wz1kxng931n" name="h-captcha-response" style="display: none;"></textarea></div>
+</form>
+
+                </div>
+                <div class="captcha-message-3">
+                    <div class="why">
+                        <span>Pourquoi cette vérification ?</span>
+                    </div>
+                    <span>Cette vérification est effectuée pour sécuriser votre navigation et pour nous permettre d'optimiser
+              l'expérience globale
+              de tous nos utilisateurs.</span>
+                </div>
+                <div class="captcha-message-2">
+                    <span><br>Information de traçabilité:<br>b8132e94bf1d26c320a1617abdfc4223</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div aria-hidden="true" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(215, 215, 215); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 4px; border-radius: 4px; left: auto; top: -10000px; z-index: -2147483648; position: absolute; pointer-events: auto; transition: opacity 0.15s ease-out 0s; opacity: 0; visibility: hidden;"><div style="position: relative; z-index: 1;"><iframe src="https://newassets.hcaptcha.com/captcha/v1/257d501/static/hcaptcha.html#frame=challenge&amp;id=0wz1kxng931n&amp;host=franceconnect.gouv.fr&amp;sentry=true&amp;reportapi=https%3A%2F%2Faccounts.hcaptcha.com&amp;recaptchacompat=true&amp;custom=false&amp;hl=en&amp;tplinks=on&amp;pstissuer=https%3A%2F%2Fpst-issuer.hcaptcha.com&amp;sitekey=f6af350b-e1f0-4be9-847a-de731e69489a&amp;theme=light&amp;origin=https%3A%2F%2Ffranceconnect.gouv.fr" frameborder="0" scrolling="no" allow="private-state-token-issuance 'src'; private-state-token-redemption 'src'" title="Main content of the hCaptcha challenge" style="border: 0px; z-index: 2000000000; position: relative;"></iframe></div><div style="width: 100%; height: 100%; position: fixed; pointer-events: none; top: 0px; left: 0px; z-index: 0; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div style="border-width: 11px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 1; right: 100%;"><div style="border-width: 10px; border-style: solid; border-color: transparent rgb(255, 255, 255) transparent transparent; position: relative; top: 10px; z-index: 1;"></div><div style="border-width: 11px; border-style: solid; border-color: transparent rgb(215, 215, 215) transparent transparent; position: relative; top: -11px; z-index: 0;"></div></div></div></body></html>
