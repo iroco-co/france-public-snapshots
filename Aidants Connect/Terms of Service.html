@@ -10,7 +10,7 @@
   <title>Aidants Connect - Conditions générales d'utilisation</title>
 
   
-  <script type="importmap" nonce="IJoC7Vb9dCTisH+1Lqs7rw==">{"imports": {"Stimulus": "https://unpkg.com/stimulus@3.2.2/dist/stimulus.js", "AidantsConnectApplication": "/static/js/ac-app.mjs", "MarkdownEditor": "/static/js/widgets/markdown-editor.mjs", "ChartJS": "https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js", "ChartJSDatalabel": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0", "autoComplete": "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"}}</script>
+  <script type="importmap" nonce="r5w4TVbObIWwqqbcs/nxUg==">{"imports": {"Stimulus": "https://unpkg.com/stimulus@3.2.2/dist/stimulus.js", "AidantsConnectApplication": "/static/js/ac-app.mjs", "MarkdownEditor": "/static/js/widgets/markdown-editor.mjs", "ChartJS": "https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js", "ChartJSDatalabel": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0", "autoComplete": "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"}}</script>
 
   
 <link rel="stylesheet"
@@ -166,16 +166,18 @@
     Formation
   </a>
 </li>
-<li class="fr-nav__item">
-  <a
-    class="fr-nav__link"
-    target="_self"
-    href="/stats/"
-    
-  >
-    Statistiques
-  </a>
-</li>
+
+  <li class="fr-nav__item">
+    <a
+      class="fr-nav__link"
+      target="_self"
+      href="/temoignages/"
+      
+    >
+      Témoignages
+    </a>
+  </li>
+
 <li class="fr-nav__item">
   <a
     class="fr-nav__link"
@@ -190,24 +192,22 @@
   <a
     class="fr-nav__link"
     target="_self"
+    href="/stats/"
+    
+  >
+    Statistiques
+  </a>
+</li>
+<li class="fr-nav__item">
+  <a
+    class="fr-nav__link"
+    target="_self"
     href="/faq/"
     
   >
     Aide
   </a>
 </li>
-
-  <li class="fr-nav__item">
-    <a
-      class="fr-nav__link"
-      target="_self"
-      href="/temoignages/"
-      
-    >
-      Témoignages
-    </a>
-  </li>
-
 
 
             
@@ -387,7 +387,64 @@
     </div>
   </div>
 
-  <section id="modal-dest"></section>
+  <section data-controller="main-modal">
+    <button class="fr-btn" data-fr-opened="false" aria-controls="main-modal" hidden aria-hidden="true">
+      
+    </button>
+    <dialog
+      id="main-modal"
+      class="fr-modal"
+      aria-labelledby="fr-modal-title"
+      role="dialog"
+      data-main-modal-target="dialog"
+      data-action="dsfr.conceal->main-modal#onConceal"
+    >
+      <div class="fr-container fr-container--fluid fr-container-md">
+        <div class="fr-grid-row fr-grid-row--center">
+          <div class="fr-col-12 fr-col-md-8 fr-col-lg-6">
+            <div class="fr-modal__body">
+              <div class="fr-modal__header">
+                <button class="fr-btn--close fr-btn" title="Fermer la fenêtre modale" aria-controls="main-modal">
+                  Fermer
+                </button>
+              </div>
+              <div class="fr-modal__content">
+                <h1 id="fr-modal-title" class="fr-modal__title" data-main-modal-target="title"></h1>
+                <div data-main-modal-target="content"></div>
+              </div>
+              <div class="fr-modal__footer" data-main-modal-target="footer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    <template data-main-modal-target="loaderTpl">
+      <img
+        src="/static/images/icons/AC-loader.svg"
+        alt="Chargement, veuillez patienter…"
+        class="loader"
+        data-profile-edit-modal-target="loader"
+      />
+    </template>
+    <template data-main-modal-target="errorTpl">
+      
+      
+
+<div role="alert"
+     class="fr-alert fr-alert--error">
+  
+    <p class="fr-alert__title">Une erreur sʼest produite</p>
+  
+  
+    <p>
+      Quelque-chose sʼest mal passé de notre côté. Ce n'est pas de votre faute. Veuillez fermer la fenêtre et réessayer. Si le problème persiste, veuillez nous contacter à <a class="fr-link" href="mailto:connexion@aidantsconnect.beta.gouv.fr">connexion@aidantsconnect.beta.gouv.fr</a>
+    </p>
+  
+  
+</div>
+
+    </template>
+  </section>
 </main>
 
 
@@ -484,6 +541,7 @@
         </ul>
       </div>
     </div>
+    
     <div class="fr-footer__bottom">
       <ul class="fr-footer__bottom-list">
         <li class="fr-footer__bottom-item">
@@ -531,6 +589,23 @@
         src="/static/dsfr/dist/dsfr/dsfr.nomodule.min.js"
         integrity="sha384-6D+aTUzuRoyopt1Ol/+T7WcnBMAwxhx67azX1vSEt98q7uN0FBKzfDHSytt+IWo9"
         ></script>
+
+<script nonce="r5w4TVbObIWwqqbcs/nxUg==">
+    (() => {
+        let resolve;
+        const promise = new Promise(res => { resolve = res })
+        const poll = () => {
+            try {
+                if (typeof dsfr(document.querySelector("#main-modal")).modal.conceal == "function") {
+                    clearInterval(id)
+                    resolve()
+                }
+            } catch {/* Do continue polling */}
+        }
+        const id = setInterval(poll, 50)
+        window.dsfrReady = promise
+    })()
+</script>
 
 <script id="cookie-banner" defer src="https://unpkg.com/tarteaucitronjs@1.15.0/tarteaucitron.js"></script>
 <script defer src="https://unpkg.com/tarteaucitronjs@1.15.0/lang/tarteaucitron.fr.js"></script>
