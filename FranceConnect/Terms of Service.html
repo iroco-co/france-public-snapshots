@@ -2,11 +2,11 @@
     <title>Captcha</title>
     <meta name="viewport" content="width=device-width">
     <meta charset="utf-8">
-    <script>function submitForm() {
-  var http = new XMLHttpRequest();
-  var url = '/.well-known/baleen/captcha/check';
-  captcha = new FormData(document.getElementById("captcha-form")).get('g-recaptcha-response')
-  var params = 'g-recaptcha-response=' + encodeURIComponent(captcha) + '&captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKXy8rBALRT84NwP7OpBf0xMPRZnXPcnUtde0lixtJhoxTRUQbWaEgRwtS_oJkxeQnD';
+    <script>function submitForm(captcha) {
+  const http = new XMLHttpRequest();
+  const url = '/.well-known/baleen/captcha/check';
+  var params = 'g-recaptcha-response=' + captcha + '&captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKX0KPxRW9om-axwO6iC2H0SFD3Yq0YDbDrGeOqSLkSkHNjqoz78YmsqJhIgZAQLZfF';
+
   http.onload = function () {
     if (http.readyState === 4) {
       document.location.reload()
@@ -15,16 +15,19 @@
   http.open('POST', url, true);
   http.send(params)
 }
-var onloadCallback = function () {
-  var xmlHttpRequest = new XMLHttpRequest();
-  xmlHttpRequest.open('POST', '/.well-known/baleen/captcha/check-js');
-  xmlHttpRequest.send('captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKXy8rBALRT84NwP7OpBf0xMPRZnXPcnUtde0lixtJhoxTRUQbWaEgRwtS_oJkxeQnD');
-};
-</script><script src="https://js.hcaptcha.com/1/api.js?onload=onloadCallback" async="" defer=""></script>
+
+window.addEventListener("load", () => {
+  document.querySelector('#altcha').addEventListener('statechange', (ev) => {
+    if (ev.detail.state === 'verified') {
+      submitForm(ev.detail.payload);
+    }
+  });
+});
+</script><script src="/.well-known/baleen/captcha/js/altcha_widget.min.js" async="" defer="" type="module"></script>
     <script src="/.well-known/baleen/captcha/js/animation.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&amp;display=swap" rel="stylesheet">
     <link href="/.well-known/baleen/captcha/assets/style.css" rel="stylesheet">
-</head>
+<style id="svelte-15co9zy">.altcha.svelte-15co9zy.svelte-15co9zy{background:var(--altcha-color-base, transparent);border:var(--altcha-border-width, 1px) solid var(--altcha-color-border, #a0a0a0);border-radius:var(--altcha-border-radius, 3px);color:var(--altcha-color-text, currentColor);display:flex;flex-direction:column;max-width:var(--altcha-max-width, 260px);overflow:hidden;position:relative;text-align:left}.altcha.svelte-15co9zy.svelte-15co9zy:focus-within{border-color:var(--altcha-color-border-focus, currentColor)}.altcha-main.svelte-15co9zy.svelte-15co9zy{align-items:center;display:flex;gap:0.4rem;padding:0.7rem}.altcha-label.svelte-15co9zy.svelte-15co9zy{flex-grow:1}.altcha-label.svelte-15co9zy label.svelte-15co9zy{cursor:pointer}.altcha-logo.svelte-15co9zy.svelte-15co9zy{color:currentColor;opacity:0.3}.altcha-logo.svelte-15co9zy.svelte-15co9zy:hover{opacity:1}.altcha-error.svelte-15co9zy.svelte-15co9zy{color:var(--altcha-color-error-text, #f23939);display:flex;font-size:0.85rem;gap:0.3rem;padding:0 0.7rem 0.7rem}.altcha-footer.svelte-15co9zy.svelte-15co9zy{align-items:center;background-color:var(--altcha-color-footer-bg, transparent);display:flex;font-size:0.75rem;opacity:0.4;padding:0.2rem 0.7rem;text-align:right}.altcha-footer.svelte-15co9zy.svelte-15co9zy:hover{opacity:1}.altcha-footer.svelte-15co9zy>.svelte-15co9zy:first-child{flex-grow:1}.altcha-footer.svelte-15co9zy a{color:currentColor}.altcha-checkbox.svelte-15co9zy.svelte-15co9zy{display:flex;align-items:center;height:24px;width:24px}.altcha-checkbox.svelte-15co9zy input.svelte-15co9zy{width:18px;height:18px;margin:0}.altcha-hidden.svelte-15co9zy.svelte-15co9zy{display:none}.altcha-spinner.svelte-15co9zy.svelte-15co9zy{animation:svelte-15co9zy-altcha-spinner 0.75s infinite linear;transform-origin:center}@keyframes svelte-15co9zy-altcha-spinner{100%{transform:rotate(360deg)}}</style></head>
 
 <body>
 <div class="main-container">
@@ -56,9 +59,8 @@ var onloadCallback = function () {
               au challenge suivant :</span>
                 </div>
                 <div class="captcha-container">
-                    <form id="captcha-form" action="" method="POST">
-    <div class="g-recaptcha" data-sitekey="f6af350b-e1f0-4be9-847a-de731e69489a" data-callback="submitForm">
-    <iframe src="https://newassets.hcaptcha.com/captcha/v1/b6c212eccc6d3676f41433be7254abfb9c3991f4/static/hcaptcha.html#frame=checkbox&amp;id=007zjha6g7t5o&amp;host=franceconnect.gouv.fr&amp;sentry=true&amp;reportapi=https%3A%2F%2Faccounts.hcaptcha.com&amp;recaptchacompat=true&amp;custom=false&amp;hl=en&amp;tplinks=on&amp;andint=off&amp;pstissuer=https%3A%2F%2Fpst-issuer.hcaptcha.com&amp;sitekey=f6af350b-e1f0-4be9-847a-de731e69489a&amp;theme=light&amp;origin=https%3A%2F%2Ffranceconnect.gouv.fr" tabindex="0" frameborder="0" scrolling="no" allow="private-state-token-issuance 'src'; private-state-token-redemption 'src'" title="Widget containing checkbox for hCaptcha security challenge" data-hcaptcha-widget-id="007zjha6g7t5o" data-hcaptcha-response="" style="pointer-events: auto; background-color: rgba(255, 255, 255, 0); border-radius: 4px; width: 302px; height: 76px; overflow: hidden;"></iframe><textarea id="g-recaptcha-response-007zjha6g7t5o" name="g-recaptcha-response" style="display: none;"></textarea><textarea id="h-captcha-response-007zjha6g7t5o" name="h-captcha-response" style="display: none;"></textarea></div>
+                    <form id="altcha-form">
+    <altcha-widget hidelogo="" id="altcha" strings="{&quot;label&quot;:&quot;Je ne suis pas un robot&quot;}" challengeurl="/.well-known/baleen/captcha/generate?captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKX0KPxRW9om-axwO6iC2H0SFD3Yq0YDbDrGeOqSLkSkHNjqoz78YmsqJhIgZAQLZfF"><div class="altcha svelte-15co9zy" data-state="unverified"><div class="altcha-main svelte-15co9zy"> <div class="altcha-checkbox svelte-15co9zy"><input type="checkbox" id="altcha_checkbox" required="" class="svelte-15co9zy"></div> <div class="altcha-label svelte-15co9zy"><label for="altcha_checkbox" class="svelte-15co9zy">Je ne suis pas un robot</label></div> </div>  <div class="altcha-footer svelte-15co9zy"><div class="svelte-15co9zy">Protected by <a href="https://baleen.cloud/" target="_blank">BALEEN</a></div></div></div></altcha-widget>
 </form>
 
                 </div>
@@ -71,7 +73,7 @@ var onloadCallback = function () {
               de tous nos utilisateurs.</span>
                 </div>
                 <div class="captcha-message-2">
-                    <span><br>Information de traçabilité:<br>18b1292caede070ea16c2f01274b03a8</span>
+                    <span><br>Information de traçabilité:<br>e8d7f5dcbd76f58a0ebcb3342242eafb</span>
                 </div>
             </div>
         </div>
@@ -79,4 +81,4 @@ var onloadCallback = function () {
 </div>
 
 
-<div aria-hidden="true" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(215, 215, 215); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 4px; border-radius: 4px; left: auto; top: -10000px; z-index: -2147483648; position: absolute; pointer-events: auto; transition: opacity 0.15s ease-out; opacity: 0; visibility: hidden;"><div style="position: relative; z-index: 1;"><iframe src="https://newassets.hcaptcha.com/captcha/v1/b6c212eccc6d3676f41433be7254abfb9c3991f4/static/hcaptcha.html#frame=challenge&amp;id=007zjha6g7t5o&amp;host=franceconnect.gouv.fr&amp;sentry=true&amp;reportapi=https%3A%2F%2Faccounts.hcaptcha.com&amp;recaptchacompat=true&amp;custom=false&amp;hl=en&amp;tplinks=on&amp;andint=off&amp;pstissuer=https%3A%2F%2Fpst-issuer.hcaptcha.com&amp;sitekey=f6af350b-e1f0-4be9-847a-de731e69489a&amp;theme=light&amp;origin=https%3A%2F%2Ffranceconnect.gouv.fr" frameborder="0" scrolling="no" allow="private-state-token-issuance 'src'; private-state-token-redemption 'src'" title="Main content of the hCaptcha challenge" style="border: 0px; z-index: 2000000000; position: relative;"></iframe></div><div style="width: 100%; height: 100%; position: fixed; pointer-events: none; top: 0px; left: 0px; z-index: 0; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div style="border-width: 11px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 1; right: 100%;"><div style="border-width: 10px; border-style: solid; border-color: transparent rgb(255, 255, 255) transparent transparent; position: relative; top: 10px; z-index: 1;"></div><div style="border-width: 11px; border-style: solid; border-color: transparent rgb(215, 215, 215) transparent transparent; position: relative; top: -11px; z-index: 0;"></div></div></div></body></html>
+</body></html>
