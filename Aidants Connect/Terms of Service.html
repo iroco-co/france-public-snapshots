@@ -10,7 +10,7 @@
   <title>Aidants Connect - Conditions générales d'utilisation</title>
 
   
-  <script type="importmap" nonce="mxlH7jNkvSNYMbgSB64Nlg==">{"imports": {"Stimulus": "https://unpkg.com/stimulus@3.2.2/dist/stimulus.js", "AidantsConnectApplication": "/static/js/ac-app.mjs", "MarkdownEditor": "/static/js/widgets/markdown-editor.mjs", "ChartJS": "https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js", "ChartJSDatalabel": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0", "autoComplete": "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"}}</script>
+  <script type="importmap" nonce="7s7ml9G/tprApyzZZS1rKg==">{"imports": {"Stimulus": "https://unpkg.com/stimulus@3.2.2/dist/stimulus.js", "AidantsConnectApplication": "/static/js/ac-app.mjs", "MarkdownEditor": "/static/js/widgets/markdown-editor.mjs", "ChartJS": "https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js", "ChartJSDatalabel": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0", "autoComplete": "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"}}</script>
 
   
 <link rel="stylesheet"
@@ -80,10 +80,18 @@
   
   
 
-<nav class="skip-links sr-only" aria-label="Accès rapide">
-  <a href="#main">Contenu principal</a>
-  <a href="#footer">Pied de page</a>
-</nav>
+<div class="fr-skiplinks">
+    <nav role="navigation" aria-label="Accès rapide" class="fr-container">
+        <ul class="fr-skiplinks__list">
+            <li>
+                <a class="fr-link" href="#main">Contenu principal</a>
+            </li>
+            <li>
+                <a class="fr-link" href="#footer">Pied de page</a>
+            </li>
+        </ul>
+    </nav>
+</div>
 
 
 <header role="banner" class="fr-header">
@@ -238,6 +246,7 @@
     >Menu
     </button>
     <div class="fr-collapse" id="fr-sidemenu-wrapper">
+      <div class="fr-sidemenu__title" id="fr-sidemenu-title">Menu</div>
       <ul class="fr-sidemenu__list">
         <li class="fr-sidemenu__item fr-sidemenu__item--active">
           <a
@@ -410,7 +419,6 @@
       id="main-modal"
       class="fr-modal"
       aria-labelledby="fr-modal-title"
-      role="dialog"
       data-main-modal-target="dialog"
       data-action="dsfr.conceal->main-modal#onConceal"
     >
@@ -608,7 +616,7 @@
         integrity="sha384-6D+aTUzuRoyopt1Ol/+T7WcnBMAwxhx67azX1vSEt98q7uN0FBKzfDHSytt+IWo9"
         ></script>
 
-<script nonce="mxlH7jNkvSNYMbgSB64Nlg==">
+<script nonce="7s7ml9G/tprApyzZZS1rKg==">
     (() => {
         let resolve;
         const promise = new Promise(res => { resolve = res })
