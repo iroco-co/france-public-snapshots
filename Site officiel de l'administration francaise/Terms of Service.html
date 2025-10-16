@@ -54,7 +54,7 @@
                 type="submit"
                 title="Rechercher sur le site"><span>
               Rechercher sur le site
-              </span></button></form></div></div></div></div></div></div></div><div class="fr-header__menu fr-modal" id="header-navigation" data-_csrf="34d1602e-0d9e-444a-8795-f07f52e0133a" data-_csrf_header="X-CSRF-TOKEN"><div class="fr-container"><button type="button" class="fr-link--close fr-link" aria-controls="header-navigation" title="Fermer le menu">
+              </span></button></form></div></div></div></div></div></div></div><div class="fr-header__menu fr-modal" id="header-navigation" data-_csrf="80e6b91e-1a07-455f-830c-e16f1b64a799" data-_csrf_header="X-CSRF-TOKEN"><div class="fr-container"><button type="button" class="fr-link--close fr-link" aria-controls="header-navigation" title="Fermer le menu">
             Fermer
           </button><div class="fr-header__menu-links"></div><nav class="fr-nav sp-nav" id="header-navigation-bar" role="navigation" aria-label="Menu principal"><ul class="fr-nav__list"><li class="fr-nav__item"><a class="fr-nav__link"
          href="https://www.service-public.gouv.fr/particuliers"
@@ -425,8 +425,8 @@
                 path: getPagePath()
               },
               user: {
-                uid: "21257101",
-                status: "connecte",
+                uid: "",
+                status: "anonym",
                 language: "FR",
                 type: "autre"
               },
@@ -452,74 +452,6 @@
         }
       </script><script data-test="eulerian-prod-mode">
       window.dsfr.production = true;
-    </script><iframe id="iframeOP" name="iframeOP" src="https://auth.service-public.gouv.fr/realms/service-public/custom-login-actions/login-status-iframe.html" width="0"
-            height="0" hidden></iframe><iframe id="iframeCheckSession" name="iframeCheckSession" sandbox="allow-same-origin" src="about:blank" width="0"
-            height="0" hidden></iframe><script>
-      let timerID;
-      let targetOP = "https:\/\/auth.service-public.gouv.fr";
-      let clientId = "spclient";
-      let initialInterval = parseInt("3000");
-      let interval = initialInterval;
-
-      function startCheckingStatus() {
-        if (initialInterval && initialInterval > 0) {
-          window.addEventListener("message", receiveMessage, false);
-          timerID = setInterval(checkStatus, initialInterval);
-        }
-      }
-
-      function getCookieValue(cookieName) {
-        let name = cookieName + "=";
-        let cookies = document.cookie.split(';');
-        if (!cookies) {
-          return null;
-        }
-        for (let i = 0; i < cookies.length; i++) {
-          let cookie = cookies[i].trim();
-          if (cookie.indexOf(name) === 0) {
-            return cookie.substring(name.length, cookie.length);
-          }
-        }
-        return null;
-      }
-
-      function checkStatus() {
-        let sessionState = getCookieValue("KC_SESSION_STATE");
-
-        if (!sessionState) {
-          return;
-        }
-
-        let text = clientId + " " + sessionState;
-        document.getElementById('iframeOP').contentWindow.postMessage(text, targetOP);
-      }
-
-      function receiveMessage(event) {
-        if (targetOP !== event.origin) {
-          // Origin did not come from the OP; this message must be rejected
-          return;
-        }
-
-        if (event.data === "changed") {
-          // [RP] session state has changed. sending passive request
-          clearInterval(timerID);
-          requestSilentLogin();
-          interval = interval * 2; // prevent flooding on frequently changed
-          timerID = setInterval(checkStatus, interval);
-        }
-
-        if (event.data === "unchanged" && interval > initialInterval) {
-          clearInterval(timerID);
-          timerID = setInterval(checkStatus, initialInterval);
-        }
-      }
-
-      function requestSilentLogin() {
-        let urlLoginEndpoint = "https:\/\/www.service-public.gouv.fr\/openid_connect_auth\/kc?action=check_session";
-        self.frames['iframeCheckSession'].location.href = urlLoginEndpoint;
-      }
-
-      startCheckingStatus();
     </script><script> document.urlResourcesRoot = "https:\/\/www.service-public.gouv.fr\/resources\/v-740e7517aa";</script><script type="module" src="https://www.service-public.gouv.fr/resources/v-740e7517aa/assets/dsfr-1.14/dist/dsfr.module.min.js"></script><script type="text/javascript" nomodule
           src="https://www.service-public.gouv.fr/resources/v-740e7517aa/assets/dsfr-1.14/dist/dsfr.nomodule.min.js"></script><script type="module"
           src="https://www.service-public.gouv.fr/resources/v-740e7517aa/assets/dsfr-1.14/dist/analytics/analytics.module.min.js"></script><script type="text/javascript" nomodule
