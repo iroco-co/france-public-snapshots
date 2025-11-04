@@ -1,84 +1,282 @@
-<!DOCTYPE html><html><head>
-    <title>Captcha</title>
-    <meta name="viewport" content="width=device-width">
-    <meta charset="utf-8">
-    <script>function submitForm(captcha) {
-  const http = new XMLHttpRequest();
-  const url = '/.well-known/baleen/captcha/check';
-  var params = 'g-recaptcha-response=' + captcha + '&captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKXLbdwaX94iHNe8okDoHtUG7y5hkM6D2nabpSfJZy240nDOnpEEsofLwM1kBR5e8gV';
+<!DOCTYPE html><html lang="fr"><head itemscope="">
+  <title>FranceConnect - Conditions générales d'utilisation du service</title>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta itemprop="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FranceConnect est un dispositif qui permet aux internautes de s’identifier sur un service en ligne par l’intermédiaire d’un compte existant (impots.gouv.fr, ameli.fr…).">
 
-  http.onload = function () {
-    if (http.readyState === 4) {
-      document.location.reload()
-    }
-  };
-  http.open('POST', url, true);
-  http.send(params)
-}
+<!-- CSS -->
+<link rel="stylesheet" href="/css/materialize.min.css">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/material-icons.css">
+<link rel="stylesheet" href="/css/sunburst.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
 
-window.addEventListener("load", () => {
-  document.querySelector('#altcha').addEventListener('statechange', (ev) => {
-    if (ev.detail.state === 'verified') {
-      submitForm(ev.detail.payload);
-    }
-  });
-});
-</script><script src="/.well-known/baleen/captcha/js/altcha_widget.min.js" async="" defer="" type="module"></script>
-    <script src="/.well-known/baleen/captcha/js/animation.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&amp;display=swap" rel="stylesheet">
-    <link href="/.well-known/baleen/captcha/assets/style.css" rel="stylesheet">
-<style id="svelte-15co9zy">.altcha.svelte-15co9zy.svelte-15co9zy{background:var(--altcha-color-base, transparent);border:var(--altcha-border-width, 1px) solid var(--altcha-color-border, #a0a0a0);border-radius:var(--altcha-border-radius, 3px);color:var(--altcha-color-text, currentColor);display:flex;flex-direction:column;max-width:var(--altcha-max-width, 260px);overflow:hidden;position:relative;text-align:left}.altcha.svelte-15co9zy.svelte-15co9zy:focus-within{border-color:var(--altcha-color-border-focus, currentColor)}.altcha-main.svelte-15co9zy.svelte-15co9zy{align-items:center;display:flex;gap:0.4rem;padding:0.7rem}.altcha-label.svelte-15co9zy.svelte-15co9zy{flex-grow:1}.altcha-label.svelte-15co9zy label.svelte-15co9zy{cursor:pointer}.altcha-logo.svelte-15co9zy.svelte-15co9zy{color:currentColor;opacity:0.3}.altcha-logo.svelte-15co9zy.svelte-15co9zy:hover{opacity:1}.altcha-error.svelte-15co9zy.svelte-15co9zy{color:var(--altcha-color-error-text, #f23939);display:flex;font-size:0.85rem;gap:0.3rem;padding:0 0.7rem 0.7rem}.altcha-footer.svelte-15co9zy.svelte-15co9zy{align-items:center;background-color:var(--altcha-color-footer-bg, transparent);display:flex;font-size:0.75rem;opacity:0.4;padding:0.2rem 0.7rem;text-align:right}.altcha-footer.svelte-15co9zy.svelte-15co9zy:hover{opacity:1}.altcha-footer.svelte-15co9zy>.svelte-15co9zy:first-child{flex-grow:1}.altcha-footer.svelte-15co9zy a{color:currentColor}.altcha-checkbox.svelte-15co9zy.svelte-15co9zy{display:flex;align-items:center;height:24px;width:24px}.altcha-checkbox.svelte-15co9zy input.svelte-15co9zy{width:18px;height:18px;margin:0}.altcha-hidden.svelte-15co9zy.svelte-15co9zy{display:none}.altcha-spinner.svelte-15co9zy.svelte-15co9zy{animation:svelte-15co9zy-altcha-spinner 0.75s infinite linear;transform-origin:center}@keyframes svelte-15co9zy-altcha-spinner{100%{transform:rotate(360deg)}}</style></head>
+<!-- JS / JQUERY -->
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script>
+
+  <link rel="stylesheet" href="css/privacy.css">
+</head>
 
 <body>
-<div class="main-container">
-    <div class="header" style="visibility:hidden">
-        <!-- Locale selection to be handled at a later stage. We need to regenerate the page with the correct recaptcha sitekey -->
-        <a class="locale-select" href="#">
-            <span>FR</span>
-            <div class="arrow"></div>
-        </a>
-        <div class="choice-container">
-            <div class="choice hide">
-                <a href="/.well-known/baleen/captcha/en/captcha.html">English</a>
+  <div id="main-nav" class="navbar-fixed">
+    <nav class="white">
+        <div class="nav-wrapper row">
+            <div class="col s8 l2">
+                <a href="/" class="brand-logo">FranceConnect</a>
+            </div>
+            <div class="partenaires-btn no-mobile">
+                <a href="https://docs.partenaires.franceconnect.gouv.fr/">Administration, Entreprise ?<br>Devenez partenaire</a>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="captcha-body">
-            <div class="captcha-card">
-                <img src="/.well-known/baleen/captcha/assets/logo.svg">
-                <div class="captcha-message-1">
-                    L'accès au site<br>
-                    <span id="website"></span><br>
-                    est protégé par Baleen
-                </div>
-                <div class="separator"></div>
-                <div class="captcha-message-2">
-            <span>Afin de nous assurer que vous n'êtes pas un robot et de vous permettre d'accéder au contenu demandé,
-              merci de répondre
-              au challenge suivant :</span>
-                </div>
-                <div class="captcha-container">
-                    <form id="altcha-form">
-    <altcha-widget hidelogo="" id="altcha" strings="{&quot;label&quot;:&quot;Je ne suis pas un robot&quot;}" challengeurl="/.well-known/baleen/captcha/generate?captcha_token=7e078vI4Mas97QIg9GUfxZwGK4LalaPIKE3GiedlAOy-V107-8eB0RQR94floIJ12w4fChQbQrrDSbkACZ4JrkpOVZdxPh0yeT_hV_3VxnkeuwhWtyu97-BCm_He0xKXLbdwaX94iHNe8okDoHtUG7y5hkM6D2nabpSfJZy240nDOnpEEsofLwM1kBR5e8gV"><div class="altcha svelte-15co9zy" data-state="unverified"><div class="altcha-main svelte-15co9zy"> <div class="altcha-checkbox svelte-15co9zy"><input type="checkbox" id="altcha_checkbox" required="" class="svelte-15co9zy"></div> <div class="altcha-label svelte-15co9zy"><label for="altcha_checkbox" class="svelte-15co9zy">Je ne suis pas un robot</label></div> </div>  <div class="altcha-footer svelte-15co9zy"><div class="svelte-15co9zy">Protected by <a href="https://baleen.cloud/" target="_blank">BALEEN</a></div></div></div></altcha-widget>
-</form>
-
-                </div>
-                <div class="captcha-message-3">
-                    <div class="why">
-                        <span>Pourquoi cette vérification ?</span>
-                    </div>
-                    <span>Cette vérification est effectuée pour sécuriser votre navigation et pour nous permettre d'optimiser
-              l'expérience globale
-              de tous nos utilisateurs.</span>
-                </div>
-                <div class="captcha-message-2">
-                    <span><br>Information de traçabilité:<br>7703203a882c234e1fe6c3646593912c</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    </nav>
 </div>
+
+  <div class="container">
+    <br>
+    <br>
+    <h4 class="center-align">
+      CGU du service FranceConnect pour les Utilisateurs
+    </h4>
+
+    <div class="row center-align">
+      <div class="col s12 l8 offset-l2">
+        <p>
+          Cette page vise à définir les conditions générales d’utilisation du
+          Service. L’utilisation du Service emporte adhésion à ces conditions.
+        </p>
+        <p>
+          Version 1.7 - Cette version est applicable à partir du 6 décembre 2021
+        </p>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col s12 xl10 offset-xl1">
+        <div class="card-panel faq z-depth-1">
+          <h6>Vocabulaire</h6>
+          <p>
+            <b>« Nous »</b> : la DINUM (Direction Interministérielle du Numérique) qui met en œuvre et 
+            opère le Téléservice FranceConnect/FranceConnect+.<br>
+            <b>« Vous »</b> : particulier, utilisateur du Téléservice.<br>
+            <b>«&nbsp;Le Téléservice&nbsp;»</b> : le Téléservice FranceConnect et/ou FranceConnect+.<br>
+            <b>«&nbsp;Fournisseurs de service&nbsp;»</b>&nbsp;: les partenaires du Téléservice habilités 
+            pour proposer ce Téléservice afin de Vous identifier et/ou authentifier sur leur(s) service(s) en ligne.<br>
+
+            <b>«&nbsp;Fournisseurs d’Identité&nbsp;»</b>&nbsp;: les partenaires du Téléservice offrant 
+            des dispositifs d’identification et d’authentification permettant d’attester de votre identité
+            lorsque Vous utilisez le Téléservice. 
+
+          </p>
+          <p></p>
+
+          <hr>
+          <br>
+
+          <h6>Présentation</h6>
+          <p>
+            Afin de faciliter vos accès aux services en ligne, l’État français a mis en place le Téléservice 
+            FranceConnect (<a href="https://www.legifrance.gouv.fr/loda/id/JORFTEXT000037611479/2020-10-15/">arrêté 
+            du 8 novembre 2018</a>). En mai 2021, le Téléservice FranceConnect a été complété 
+            par FranceConnect+.
+          </p>
+          <p>
+            Le Téléservice FranceConnect/FranceConnect+ Vous permet de vous identifier et/ou authentifier auprès 
+            des services en ligne proposant le bouton FranceConnect ou FranceConnect+. FranceConnect+ permet d’accéder 
+            à des services nécessitant un plus fort niveau de garantie d’identification/authentification électronique. 
+            La liste des partenaires de FranceConnect et de FranceConnect+ est disponible ici&nbsp;:
+            <a href="https://franceconnect.gouv.fr/nos-services">https://franceconnect.gouv.fr/nos-services</a>.
+
+          </p>
+          <p>
+           C’est le Fournisseur de service en ligne auquel Vous souhaitez Vous connecter qui définit le niveau de 
+           garantie d’identification/authentification requis pour accéder à son ou ses services en ligne. 
+          </p>
+          <p>
+            Pour utiliser le Téléservice, vous devez&nbsp;: 
+          </p>
+          <ul class="list">
+            <li>être enregistré au répertoire national d’identification des personnes physiques (RNIPP) de l'INSEE,</li>
+            <li>être inscrit auprès d’un Fournisseur d’identité afin que vos données d’identité aient été vérifiées&nbsp;; </li>
+            <li>et avoir plus de 15 ans. </li>
+          </ul>
+          <p>
+            Lorsque vous cliquez sur le bouton FranceConnect ou FranceConnect+, le Téléservice se charge de faire le 
+            pont entre le Fournisseur d’identité et le Fournisseur de service en générant un identifiant technique unique.
+            Ainsi, suite à votre identification/authentification réussie auprès du Fournisseur d’identité que vous avez 
+            choisi, ce dernier envoie au Téléservice Vos données d’identité (nom de naissance, prénoms, date et lieu de 
+            naissance, sexe) ainsi que les données complémentaires (nom d’usage, adresse courriel) dont il dispose.&nbsp;Le 
+            Téléservice interroge alors le Répertoire National d’Identification des Personnes Physiques (RNIPP) de l’INSEE 
+            pour vérifier que Vous existez, que Vous êtes vivant et qu’il n’existe pas d’homonyme. Si votre
+            identification/authentification est validée, les données d’identité sélectionnées peuvent être transmises de 
+            votre Fournisseur d’identité vers le Fournisseur de service. Vous êtes alors connecté au service en ligne du
+            Fournisseur de service.
+          </p>
+          <p>
+            L’accès à FranceConnect et à FranceConnect+ est gratuit. 
+          </p>
+          <hr>
+          <br>
+
+          <h6>Nos responsabilités</h6>
+          <p>
+            Notre responsabilité ne peut être engagée en cas d’usurpation d’identité ou de toute utilisation frauduleuse 
+            du Téléservice. Nous ne pouvons être tenus responsables des dommages éventuellement causés par une personne 
+            non autorisée utilisant vos identifiants et mots de passe. Il vous est rappelé que toute personne procédant à 
+            une fausse déclaration pour elle-même ou pour autrui s’expose, notamment, aux sanctions prévues à l’article 
+            441-1 du Code Pénal, prévoyant des peines pouvant aller jusqu’à trois ans d’emprisonnement et 45 000 euros 
+            d’amende.
+          </p>
+          <p>
+           Nous nous réservons le droit de bloquer votre accès, sans préavis ni indemnité d’aucune sorte, 
+           en cas de soupçon d’utilisation illicite, frauduleuse ou contraire à ces conditions générales d’utilisation.
+          </p>
+
+          <hr>
+          <br>
+
+          <h6>Vos responsabilités</h6>
+          
+          <p>
+            Il Vous appartient de respecter les conditions d’utilisation du service d’identification et 
+            d’authentification électronique souscrit auprès de votre Fournisseur d’identité. Il Vous appartient 
+            notamment de ne jamais divulguer vos identifiants et mots de passe qui doivent rester confidentiels.
+          </p>
+
+          <p>
+             Il Vous appartient de respecter les conditions d’utilisation du service définies par le Fournisseur 
+             de service. Nous Vous recommandons notamment de vous déconnecter à la fin de votre navigation.
+          </p>
+
+          <p>Vous vous engagez à nous avertir (support.usagers@franceconnect.gouv.fr)&nbsp;:</p>
+          <ul class="list">
+            <li>
+              Immédiatement de toute utilisation non autorisée de vos données d’identification et/ou d’authentification.
+            </li>
+            <li>
+              Si vous constatez qu’une de vos données d’identité n’est pas correcte.
+            </li>
+          </ul>
+
+
+          <hr>
+          <br>
+
+          <h6>Qualité de service</h6>
+
+          <p>
+            Le Téléservice peut être interrompu, sans préavis, notamment pour des raisons de maintenance, de sécurité 
+            ou de cas de force majeur. Un message d’information mentionnant cette indisponibilité pourra être affiché. 
+            L’indisponibilité du Téléservice ne donne droit à aucune indemnité.
+          </p>
+
+          <hr>
+          <br>
+
+          <h6>Traitement de vos données</h6>
+
+          <p>
+            L’utilisation du Téléservice donne lieu au traitement de Vos données personnelles conformément aux 
+            conditions définies dans la Politique de protection des données personnelles accessible à l’adresse&nbsp;: <a href="/files/FC_Politique_Protection_Donnees_Personnelles_V1.3.pdf">https://franceconnect.gouv.fr/files/FC_Politique_Protection_Donnees_Personnelles_V1.3.pdf</a>
+            
+          </p>
+          <p>
+            La connexion à nos sites donne lieu à l’apposition de cookies dans les conditions définies dans la Politique de
+            cookies accessible à l’adresse&nbsp;: <br><a href="/files/FC_Politique_Cookies_V1.1.pdf">https://franceconnect.gouv.fr/files/FC_Politique_Cookies_V1.1.pdf</a>
+          </p>
+
+          <hr>
+          <br>
+
+
+          <h6>Loi applicable et litige</h6>
+
+          <p>En cas de différend lié à l’exécution des Conditions Générales d’Utilisation et plus largement à l’exécution du Téléservice,
+          l’utilisateur et la DINUM s’efforcent de le régler à l’amiable préalablement à toute action contentieuse.</p>
+ 
+          <p>Dans le cas où un accord amiable ne peut intervenir, le droit applicable au litige est le droit français et les juridictions 
+          administratives sont compétentes pour en connaître.</p>
+
+          <hr>
+          <br>
+
+          <h6>Historique des versions</h6>
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>Conditions Générales d'utilisation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="/files/CGU_Utilisateur_v1.7.pdf"> Version 1.7</a> - Applicable à partir du 6 décembre 2021 </td></tr>
+              <tr><td><a href="/files/CGU_Utilisateur_v1.6.pdf"> Version 1.6</a> - Applicable du 12 mai 2021 au 5 décembre 2021 </td></tr>
+              <tr><td><a href="/files/CGU_Usager_v1.5.pdf"> Version 1.5</a> - Applicable du 22 mai 2020 au 11 mai 2021</td></tr>
+              <tr><td><a href="/files/CGU_Usager_v1.4.pdf"> Version 1.4</a> - Applicable de septembre 2018 à mai 2020</td></tr>
+              <tr><td><a href="/files/CGU_Usager_v1.3.pdf"> Version 1.3</a> - Applicable de mars 2018 à septembre 2018</td></tr>
+              <tr><td><a href="/files/CGU_Usager_v1.2.pdf"> Version 1.2</a> - Applicable de septembre 2017 à mars 2018 </td></tr>
+              <tr><td><a href="/files/CGU_Usager_v1.1.pdf"> Version 1.1</a> - Applicable de janvier 2017 à septembre 2017</td></tr>
+              <tr><td><a href="/files/CGU_Usager_v1.0.pdf"> Version 1.0</a> - Applicable de décembre 2016 à janvier 2017</td></tr>
+            </tbody>
+          </table>
+  
+      
+      <br>
+
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>Politique de protection des données personnelles</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><a href="/files/FC_Politique_Protection_Donnees_Personnelles_V1.2.pdf"> Version 1.2</a> - Applicable à partir du 6 décembre 2021 </td></tr>
+              <tr><td><a href="/files/FC_Politique_Protection_Donnees_Personnelles_V1.1.pdf"> Version 1.1</a> - Applicable du 12 mai 2021 au 5 décembre 2021 </td></tr>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="white-text">
+    <footer>
+  <div id="footer-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m4">
+          <p>FranceConnect <span id="year">2025</span></p>
+        </div>
+        <div class="col s12 m4">
+          <ul class="left">
+            <li>
+              <a id="link-press" href="/presse" class="white-text">On parle de nous</a>
+            </li>
+            <li>
+              <a id="link-become-partner" href="https://docs.partenaires.franceconnect.gouv.fr/" class="white-text">Devenez partenaire</a>
+            </li>
+            <li>
+              <a href="https://aide.franceconnect.gouv.fr/" class="white-text">FAQ usagers</a>
+            </li>
+            <li><a href="/cgu" class="white-text">CGU</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+
+  </footer>
+
 
 
 </body></html>
