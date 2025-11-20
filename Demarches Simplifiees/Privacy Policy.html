@@ -9,11 +9,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="application-name" content="demarches-simplifiees.fr">
+    <meta name="application-name" content="demarche.numerique.gouv.fr">
 
     <meta
       name="apple-mobile-web-app-title"
-      content="demarches-simplifiees.fr"
+      content="demarche.numerique.gouv.fr"
     >
 
     <meta
@@ -27,11 +27,11 @@
       >
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="x0llPR2_bZMNEQ-Mi_6QSB3RjP-0ZIyQ6VuLS4nmJr2vjFugPgTzlOAp9uBTXw5lYnH3R8arQe2hQIwP4pjPFA" />
+<meta name="csrf-token" content="uvdov-xPUvLDuj0tuUc0UKRzp3SVo3PsCV9Ab9rxVO8p1WmxServZtHNdSatXbWbO1ATFA2sb68A9-S_rNlSsg" />
 
 
     <title>
-      Suivi · demarches-simplifiees.fr
+      Suivi · demarche.numerique.gouv.fr
     </title>
 
     <link rel="icon" type="image/png" href="https://www.demarches-simplifiees.fr/assets/favicons/16x16-fc5f2296bedd5238985a17d2345fdf63a29394702be4cf0dfc02b6236e46249b.png" sizes="16x16" />
@@ -47,7 +47,7 @@
 
     <script>
 //<![CDATA[
-window.gon={};gon.autosave={"debounce_delay":1000,"status_visible_duration":6000};gon.autocomplete={"api_geo_url":"https://geo.api.gouv.fr","api_adresse_url":"https://data.geopf.fr/geocodage","api_education_url":"https://data.education.gouv.fr/api/records/1.0"};gon.matomo={"cookieDomain":"*.www.demarches-simplifiees.fr","domain":"*.www.demarches-simplifiees.fr","enabled":true,"host":"stats.data.gouv.fr","key":"73"};gon.sentry={"key":"https://4248116497b049dea165998d79024565@sentry.io/1429547","enabled":true,"environment":"production","browser":{"modern":false},"user":{"id":"Guest"},"release":"2025-11-19-17-14+a7de4bf28"};gon.locale="fr";
+window.gon={};gon.autosave={"debounce_delay":1000,"status_visible_duration":6000};gon.autocomplete={"api_geo_url":"https://geo.api.gouv.fr","api_adresse_url":"https://data.geopf.fr/geocodage","api_education_url":"https://data.education.gouv.fr/api/records/1.0"};gon.matomo={"cookieDomain":"*.www.demarches-simplifiees.fr","domain":"*.www.demarches-simplifiees.fr","enabled":true,"host":"stats.data.gouv.fr","key":"73"};gon.sentry={"key":"https://4248116497b049dea165998d79024565@sentry.io/1429547","enabled":true,"environment":"production","browser":{"modern":false},"user":{"id":"Guest"},"release":"2025-11-20-11-39+b9ce6fc89"};gon.locale="fr";
 //]]>
 </script>
 
@@ -161,7 +161,7 @@ Système
 
         <div class='fr-alert fr-alert--warning'>
 <h2 class="fr-alert__title">Attention : Navigateur trop ancien
-</h2>      Votre navigateur internet, Unknown Browser 0, est malheureusement trop ancien. Il n’est plus compatible avec demarches-simplifiees.fr.
+</h2>      Votre navigateur internet, Unknown Browser 0, est malheureusement trop ancien. Il n’est plus compatible avec demarche.numerique.gouv.fr.
       <br>
       Veuillez installer un navigateur plus récent en suivant le lien suivant :
       <br>
@@ -196,7 +196,7 @@ République
 </div>
 </div>
 <div class='fr-header__service'>
-<a title="Aller à la page d’accueil — demarches-simplifiees.fr" href="/"><span class='fr-header__service-title' lang='fr'>demarches-simplifiees.fr</span>
+<a title="Aller à la page d’accueil — demarche.numerique.gouv.fr" href="/"><span class='fr-header__service-title' lang='fr'>demarche.numerique.gouv.fr</span>
 </a></div>
 </div>
 <div class='fr-header__tools'>
@@ -236,6 +236,39 @@ République
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+<script>
+  const hintUrl = "https://demarche.numerique.gouv.fr/favicon.ico"
+  
+  fetch(hintUrl, { mode: 'cors' }).then(() => {
+    window.location = 'https://demarche.numerique.gouv.fr/suivi';
+  }).catch((e) => {
+    const error = new Error("Connection test on new host failed: " + e);
+    const event = new CustomEvent("sentry:capture-exception", { detail: error });
+  
+    // listener is not immediately enabled, so wait a little bit
+    setTimeout(() => {
+      dispatchEvent(event);
+      document.getElementById("banner_auto_switch_error")?.classList?.remove("hidden");
+    }, 100);
+  })
+</script>
+<div class='fr-notice fr-notice--info' data-controller='dsfr-notice' data-dsfr-notice-target='notice' data-notice-name='switch-domain'>
+<div class='fr-container'>
+<div class='fr-notice__body'>
+<p>
+<span class='fr-notice__title'>
+demarches-simplifiees.fr s’appelle maintenant
+<a href="https://demarche.numerique.gouv.fr/suivi">demarche.numerique.gouv.fr</a>.
+<span class='hidden' id='banner_auto_switch_error'>Nous avons détecté une erreur réseau qui nous empêche de vous y rediriger. Contactez votre service informatique pour autoriser l‘accès à demarche.numerique.gouv.fr.</span>
+
+</span>
+</p>
+<button class='fr-btn--close fr-btn' data-action='dsfr-notice#closeNotice' title='Masquer le message'>
+Masquer le message
+</button>
 </div>
 </div>
 </div>
