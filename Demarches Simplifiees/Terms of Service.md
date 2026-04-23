@@ -360,3 +360,21 @@ Elle doit s’être préalablement assurée de l’instruction des dossiers dép
 #### ii. Suspension ou désactivation par la DINUM <a href="#toc108111762" id="toc108111762"></a>
 
 La DINUM peut désactiver une démarche et supprimer ou suspendre le compte d’un utilisateur : à la demande de l’Administration, pour des raisons tenant au non-respect des conditions générales d’utilisation, pour des raisons de sécurité ou suite à la cessation du Service.
+
+
+---
+
+# Agent Instructions: Querying This Documentation
+
+If you need additional information that is not directly available in this page, you can query the documentation dynamically by asking a question.
+
+Perform an HTTP GET request on the current page URL with the `ask` query parameter:
+
+```
+GET https://doc.demarches-simplifiees.fr/cgu.md?ask=<question>
+```
+
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.
