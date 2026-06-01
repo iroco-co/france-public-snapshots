@@ -10,7 +10,7 @@
   <title>Aidants Connect - Conditions générales d'utilisation</title>
 
   
-  <script type="importmap" nonce="NOu9V4ZfGa/qOZKkMVEMsQ==">{"imports": {"Stimulus": "https://unpkg.com/stimulus@3.2.2/dist/stimulus.js", "AidantsConnectApplication": "/static/js/ac-app.mjs", "MarkdownEditor": "/static/js/widgets/markdown-editor.mjs", "ChartJS": "https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js", "ChartJSDatalabel": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0", "autoComplete": "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"}}</script>
+  <script type="importmap" nonce="g9g6lYhC3VRTk6M2UoWJrA==">{"imports": {"Stimulus": "https://unpkg.com/stimulus@3.2.2/dist/stimulus.js", "AidantsConnectApplication": "/static/js/ac-app.mjs", "MarkdownEditor": "/static/js/widgets/markdown-editor.mjs", "ChartJS": "https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js", "ChartJSDatalabel": "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0", "autoComplete": "https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.9/dist/autoComplete.min.js"}}</script>
 
   
 <link rel="stylesheet"
@@ -35,10 +35,6 @@
   <meta name="title" content="Aidants Connect - aidantsconnect.beta.gouv.fr">
   <meta name="description" content="Accompagnez vos usagers en toute sécurité">
   <meta name="image" content="/static/images/aidantsconnect-illustration.svg">
-  <!-- Schema.org for Google -->
-  <meta itemprop="name" content="Aidants Connect">
-  <meta itemprop="description" content="Accompagnez vos usagers en toute sécurité">
-  <meta itemprop="image" content="/static/images/aidantsconnect-illustration.svg">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Aidants Connect">
@@ -139,7 +135,7 @@
         </div>
       </div>
     </div>
-    <div class="fr-header__menu fr-modal" id="modal-499" aria-labelledby="button-500">
+    <div class="fr-header__menu fr-modal" id="modal-499" role="dialog" aria-labelledby="button-500">
       <div class="fr-container">
         <button class="fr-btn--close fr-btn" aria-controls="modal-499" title="Fermer">
           Fermer
@@ -450,7 +446,13 @@
                 </button>
               </div>
               <div class="fr-modal__content">
-                <h1 id="fr-modal-title" class="fr-modal__title" data-main-modal-target="title"></h1>
+                <p
+                  id="fr-modal-title"
+                  class="fr-modal__title"
+                  data-main-modal-target="title"
+                  hidden
+                  aria-hidden="true"
+                ></p>
                 <div data-main-modal-target="content"></div>
               </div>
               <div class="fr-modal__footer" data-main-modal-target="footer"></div>
@@ -626,7 +628,7 @@
         integrity="sha384-52d8zoTXwznfSYC7BcHTt9njPI/7kFHpKMTTs73g+lNFnYARn2PNXw9rusgaY5iP"
         ></script>
 
-<script nonce="NOu9V4ZfGa/qOZKkMVEMsQ==">
+<script nonce="g9g6lYhC3VRTk6M2UoWJrA==">
     (() => {
         let resolve;
         const promise = new Promise(res => { resolve = res })
