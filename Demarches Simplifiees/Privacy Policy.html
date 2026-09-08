@@ -27,7 +27,7 @@
       >
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="mEg92Tzm_CpkrXVMwW2szVgW478Ha6xGcbCyHNNaC-loy0oYqw4ct0plLMtqlQ3KGhKqUtdKBdjxK8rElkGqTQ" />
+<meta name="csrf-token" content="hAOmsrBNnyxlSl0W2_O3RIUulZxC_5ASadA6EhrqEvS55rVek9MwfS7U8B5VIetRwiAOUYQOT6f3HURux97eAg" />
 
 
     <title>
@@ -47,13 +47,13 @@
 
     <script>
 //<![CDATA[
-window.gon={};gon.autosave={"debounce_delay":1000,"status_visible_duration":6000};gon.autocomplete={"api_geo_url":"https://geo.api.gouv.fr","api_adresse_url":"https://data.geopf.fr/geocodage","api_education_url":"https://data.education.gouv.fr/api/records/1.0"};gon.matomo={"cookieDomain":"*.demarche.numerique.gouv.fr","domain":"*.demarche.numerique.gouv.fr","enabled":true,"host":"stats.data.gouv.fr","key":"73"};gon.sentry={"key":"https://4248116497b049dea165998d79024565@sentry.io/1429547","enabled":true,"environment":"production","browser":{"modern":false},"user":{"id":"Guest"},"release":"2026-08-28-11-24+ef24fc97a5"};gon.locale="fr";
+window.gon={};gon.autosave={"debounce_delay":1000,"status_visible_duration":6000};gon.autocomplete={"api_geo_url":"https://geo.api.gouv.fr","api_adresse_url":"https://data.geopf.fr/geocodage","api_education_url":"https://data.education.gouv.fr/api/records/1.0"};gon.matomo={"cookieDomain":"*.demarche.numerique.gouv.fr","domain":"*.demarche.numerique.gouv.fr","enabled":true,"host":"stats.data.gouv.fr","key":"73"};gon.sentry={"key":"https://4248116497b049dea165998d79024565@sentry.io/1429547","enabled":true,"environment":"production","browser":{"modern":false},"user":{"id":"Guest"},"release":"2026-09-08-10-00+e9ce24a4ab"};gon.locale="fr";
 //]]>
 </script>
 
     
     
-    <script src="/vite/assets/application-C6SopvOs.js" crossorigin="" type="module"></script><link rel="modulepreload" href="/vite/assets/chunk-Cyuzqnbw.js" as="script" crossorigin="">
+    <script src="/vite/assets/application-y4VJquDP.js" crossorigin="" type="module"></script><link rel="modulepreload" href="/vite/assets/chunk-Cyuzqnbw.js" as="script" crossorigin="">
 <link rel="modulepreload" href="/vite/assets/preload-helper-CcrFAX6Z.js" as="script" crossorigin="">
 <link rel="modulepreload" href="/vite/assets/stimulus-Cp3ZfPvC.js" as="script" crossorigin="">
 <link rel="modulepreload" href="/vite/assets/tiny-invariant-BRVYjjZ8.js" as="script" crossorigin="">
@@ -65,14 +65,14 @@ window.gon={};gon.autosave={"debounce_delay":1000,"status_visible_duration":6000
 <link rel="modulepreload" href="/vite/assets/client-CHFCT225.js" as="script" crossorigin="">
 <link rel="modulepreload" href="/vite/assets/dist-H0IClk8K.js" as="script" crossorigin="">
 <link rel="modulepreload" href="/vite/assets/utils-IxzeosGf.js" as="script" crossorigin="">
-<link rel="modulepreload" href="/vite/assets/i18n-BJr3gByX.js" as="script" crossorigin="">
+<link rel="modulepreload" href="/vite/assets/i18n-Ctb__VTM.js" as="script" crossorigin="">
 
 
     <link rel="preload" href="https://www.demarches-simplifiees.fr/assets/Marianne-Regular-8e657d64ad967481d7fd3290e2ea23162340fae54ca839ad88b949f9d8602f32.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="https://www.demarches-simplifiees.fr/assets/Spectral-Regular-958694e3dd507d80daad1c521d500d4cf4173d0e59353cbe61afd6ba1c187228.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/vite/assets/main-DwkCFBGO.css" media="all" />
-    <link rel="stylesheet" href="/assets/application-e84e6ff63213f8c5bc6fc49f389078988483c44d82857a13d1132bf0f0c82878.css" media="all" />
+    <link rel="stylesheet" href="/assets/application-5f8ab899e6d6f7f76439aa8e3a4c64bd388c96d0b08e91d4f9ef73236cc866f5.css" media="all" />
 
     
     <script>
@@ -255,20 +255,22 @@ République
 </div>
 </div>
 <script>
-  const hintUrl = "https://demarche.numerique.gouv.fr/favicon.ico"
+  (() => {
+    const hintUrl = "https://demarche.numerique.gouv.fr/favicon.ico"
   
-  fetch(hintUrl, { mode: 'cors' }).then(() => {
-    window.location = 'https://demarche.numerique.gouv.fr/suivi';
-  }).catch((e) => {
-    const error = new Error("Connection test on new host failed: " + e);
-    const event = new CustomEvent("sentry:capture-exception", { detail: error });
+    fetch(hintUrl, { mode: 'cors' }).then(() => {
+      window.location = 'https://demarche.numerique.gouv.fr/suivi';
+    }).catch((e) => {
+      const error = new Error("Connection test on new host failed: " + e);
+      const event = new CustomEvent("sentry:capture-exception", { detail: error });
   
-    // listener is not immediately enabled, so wait a little bit
-    setTimeout(() => {
-      dispatchEvent(event);
-      document.getElementById("banner_auto_switch_error")?.classList?.remove("hidden");
-    }, 100);
-  })
+      // listener is not immediately enabled, so wait a little bit
+      setTimeout(() => {
+        dispatchEvent(event);
+        document.getElementById("banner_auto_switch_error")?.classList?.remove("hidden");
+      }, 100);
+    })
+  })()
 </script>
 <div data-controller="dsfr-notice" data-dsfr-notice-target="notice" data-notice-name="switch-domain" class="fr-notice fr-notice--info">
   <div class="fr-container">
@@ -536,8 +538,8 @@ Paramètres d’affichage
     <template id="progress-bar-template">
       <div
   class="direct-upload fr-upload-group fr-mr-2w fr-mt-3w fr-mb-0 fr-px-3v fr-py-1w "
-  id="direct-upload-c36c2523-c16e-4318-a5ad-119a226e3a47"
-  data-direct-upload-id="c36c2523-c16e-4318-a5ad-119a226e3a47"
+  id="direct-upload-590b8211-827e-4ab7-bcd4-1773c21c72da"
+  data-direct-upload-id="590b8211-827e-4ab7-bcd4-1773c21c72da"
 >
   <div
     class="direct-upload__error fr-messages-group hidden"
