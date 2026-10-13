@@ -31,7 +31,7 @@
 
 
 
-<script type="text/javascript" src="./ruxitagentjs_ICA15789MNPRTUVXfgqrux_10345260810170330.js" data-dtconfig="app=8caeaf5c83d4045b|coo=1|cors=1|owasp=1|featureHash=ICA15789MNPRTUVXfgqrux|srsr=10000|rdnt=1|uxrgce=1|cuc=feikm4qw|mel=100000|expw=1|dpvc=1|lastModification=1791447800892|tp=500,50,0|srbbv=2|agentUri=./ruxitagentjs_ICA15789MNPRTUVXfgqrux_10345260810170330.js|reportUrl=https://bf95196pdg.bf.dynatrace.com/bf|rid=RID_-351125915|rpid=-1700099916|domain=francetravail.fr" data-config='{"revision":1791447800892,"beaconUri":"https:\/\/bf95196pdg.bf.dynatrace.com\/bf","agentUri":".\/ruxitagentjs_ICA15789MNPRTUVXfgqrux_10345260810170330.js","environmentId":"feikm4qw","modules":"ICA15789MNPRTUVXfgqrux"}' data-envconfig='{"tracestateKeyPrefix":"337c6026-ce3ba1e0"}' data-appconfig='{"app":"8caeaf5c83d4045b","disableUserTracking":true,"optInMode":"full"}'></script><script src="https://cdn.francetravail.fr/webco/v1/ft-autoloader.js"></script>
+<script type="text/javascript" src="./ruxitagentjs_ICA15789MNPRTUVXfgqrux_10345260810170330.js" data-dtconfig="app=8caeaf5c83d4045b|coo=1|cors=1|owasp=1|featureHash=ICA15789MNPRTUVXfgqrux|srsr=10000|rdnt=1|uxrgce=1|cuc=feikm4qw|mel=100000|expw=1|dpvc=1|lastModification=1791447800892|tp=500,50,0|srbbv=2|agentUri=./ruxitagentjs_ICA15789MNPRTUVXfgqrux_10345260810170330.js|reportUrl=https://bf95196pdg.bf.dynatrace.com/bf|rid=RID_-351125915|rpid=-863911956|domain=francetravail.fr" data-config='{"revision":1791447800892,"beaconUri":"https:\/\/bf95196pdg.bf.dynatrace.com\/bf","agentUri":".\/ruxitagentjs_ICA15789MNPRTUVXfgqrux_10345260810170330.js","environmentId":"feikm4qw","modules":"ICA15789MNPRTUVXfgqrux"}' data-envconfig='{"tracestateKeyPrefix":"337c6026-ce3ba1e0"}' data-appconfig='{"app":"8caeaf5c83d4045b","disableUserTracking":true,"optInMode":"full"}'></script><script src="https://cdn.francetravail.fr/webco/v1/ft-autoloader.js"></script>
 
 
 
@@ -55,7 +55,7 @@
 <link id="staticAssetCSS2" rel="stylesheet" href="/modules/pr003-cmsftfr-templatesSet/css/theme-france-travail.css" media="screen, print" type="text/css"/>
 <link id="staticAssetCSS3" rel="stylesheet" href="/modules/pr003-cmsftfr-templatesSet/css/ncg/2018-edito.css" media="screen, print" type="text/css"/>
 <link id="staticAssetCSS4" rel="stylesheet" href="/modules/pr003-cmsftfr-module/css/paragraphe.css" media="screen, print" type="text/css"/>
-<script id="staticAssetJavascript0" src="/generated-resources/e2a7f89392221cc3b9812e0554b4dd.min.js"  ></script>
+<script id="staticAssetJavascript0" src="/generated-resources/1e59596d13b9781b904eaae7b30f3d.min.js"  ></script>
 <script type="text/javascript">
         var readingTimeSpeed = 200;
     </script>
@@ -66,11 +66,31 @@
                 'INFO'
             );
 
+            const USER_SERVICES_URL = "https://api.francetravail.fr/espacecandidat/v1/navigation";
+
             jQuery(document).ready(function ($) {
                 verifierAuthentification();
                 if(estAuthentifie()) {
                     $("ft-header").attr("connecte", "true");
                     $("ft-header").attr("utilisateur", authentification.badge.prenom + " " + authentification.badge.nom);
+
+
+                    fetch(USER_SERVICES_URL)
+                        .then(function(response) {
+                            if (!response.ok) {
+                                throw new Error("Erreur HTTP " + response.status);
+                            }
+                            return response.json();
+                        })
+                        .then(function(data) {
+                            const myServices = data.burger.filter(item => item.type === "THEMATIQUE");
+                            $("ft-header").attr("services", JSON.stringify(myServices));
+                        })
+                        .catch(function(err) {
+                            console.error("Erreur lors de l'appel API :", err);
+                        });
+
+
                     //lancement du maintien de l'authentification
                     maintenirAuthentification();
                     document.addEventListener("ft-header-deconnect", (e) => {
@@ -195,8 +215,8 @@
                                     Copier</button>
                         </div>
                         <div class="text_copy sr-only" id="text_copy" role="status" aria-live="polite"></div>
-                        <script type="text/javascript" id="tms_c45ebc82-f97c-451c-aaea-6215cf18bcd6" >
-document.getElementById("tms_c45ebc82-f97c-451c-aaea-6215cf18bcd6").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Copier_lien"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
+                        <script type="text/javascript" id="tms_6ec3ecf1-18f3-4bac-ab7a-b31626f1e62f" >
+document.getElementById("tms_6ec3ecf1-18f3-4bac-ab7a-b31626f1e62f").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Copier_lien"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
 </script></li>
                 </ul>
         </li>
@@ -206,8 +226,8 @@ document.getElementById("tms_c45ebc82-f97c-451c-aaea-6215cf18bcd6").parentNode.a
                 <span class="icon-print" aria-hidden="true"></span>
                 <span class="sr-only">Imprimer l'article</span>
             </a>
-            <script type="text/javascript" id="tms_cb92da36-aa89-458b-9ca2-afbbfa6a5d81" >
-document.getElementById("tms_cb92da36-aa89-458b-9ca2-afbbfa6a5d81").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Imprimer"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
+            <script type="text/javascript" id="tms_920fd75f-050a-4e0e-b07a-843cd507cc82" >
+document.getElementById("tms_920fd75f-050a-4e0e-b07a-843cd507cc82").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Imprimer"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
 </script></li>
 
             <li id="addFav">
@@ -230,8 +250,8 @@ document.getElementById("tms_cb92da36-aa89-458b-9ca2-afbbfa6a5d81").parentNode.a
                             id="btAddFav"
                             title="Ajouter à mes favoris"
                     >Ajouter à mes favoris</button>
-                    <script type="text/javascript" id="tms_8b000810-01f0-43a8-a645-e890ed4dc6d0" >
-document.getElementById("tms_8b000810-01f0-43a8-a645-e890ed4dc6d0").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Mise_en_favori"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
+                    <script type="text/javascript" id="tms_62ae89c4-f5a2-499b-9d6e-96fc506f1722" >
+document.getElementById("tms_62ae89c4-f5a2-499b-9d6e-96fc506f1722").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Mise_en_favori"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
 </script><a href="/informations/mes-favoris.html" class="btn btn-default btn-block">Voir mes favoris</a>
                     </div>
             </div>
@@ -254,8 +274,8 @@ document.getElementById("tms_8b000810-01f0-43a8-a645-e890ed4dc6d0").parentNode.a
                 <div class="dropdown-menu dropdown-menu-right" id="fav-content-1">
                     <button type="button" class="btn btn-primary btn-block" title="Supprimer de mes favoris"
                             id="btDelFav" name="520f0f06-aa0d-462e-842c-2ef014917c15">Supprimer de mes favoris</button>
-                    <script type="text/javascript" id="tms_b929abe1-8c8c-4a41-8177-8b58f611ea17" >
-document.getElementById("tms_b929abe1-8c8c-4a41-8177-8b58f611ea17").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Supprimer_favori"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
+                    <script type="text/javascript" id="tms_39d17735-4c37-41cf-956b-db72b1faf74e" >
+document.getElementById("tms_39d17735-4c37-41cf-956b-db72b1faf74e").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Bandeau_actions","Supprimer_favori"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
 </script><a href="/informations/mes-favoris.html" class="btn btn-default btn-block" title="Voir mes favoris">Voir mes favoris</a>
                     </div>
             </div>
@@ -627,8 +647,8 @@ Vous pouvez &eacute;galement vous adresser :
                         </script>
 
                         
-<script type="text/javascript" id="tms_de75f0a8-2d77-4dd9-ac3c-dbf3265a8cbd" >
-document.getElementById("tms_de75f0a8-2d77-4dd9-ac3c-dbf3265a8cbd").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Noter"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
+<script type="text/javascript" id="tms_5d5cc1be-9691-4c5b-90ab-7271dd8590c1" >
+document.getElementById("tms_5d5cc1be-9691-4c5b-90ab-7271dd8590c1").parentNode.addEventListener("click",function(){tc_vars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Noter"],"name":"ART_Protection des données personnelles","type":"action","level2":"9"};if(window.tC){window.tC.event.tag();} else {window.tagEnAttente= window.tagEnAttente||[];window.tagEnAttente.push(window.tc_vars);window.tagEnAttente.push(JSON.parse(JSON.stringify(tc_vars))); tc_vars.type = ''}});
 </script><form onsubmit="return false;" action="/informations/informations-legales-et-conditio/protection-des-donnees-personnel/article-content/protection-des-donnees-personnel.rate.do">
                             <input type="hidden" name="jcrCookieName" value="ratedce4e34ed-efe2-4ff0-abe3-a3b4dbbf560c"/>
                             <input type="hidden" name="jcrCookieValue" value="7272fba9-72ec-412b-a627-5c87410012b3"/>
@@ -679,66 +699,66 @@ document.getElementById("tms_de75f0a8-2d77-4dd9-ac3c-dbf3265a8cbd").parentNode.a
 			<div class="block-bd">
 	            <ul class="list-unstyled ">
 	                <li >
-    <article class="block-item">
-        <a href="/informations/informations-legales-et-conditio/utilisation-donnees-drm.html" class="block-item-link"
-           data-chapter1="Scroll_articles"
-           data-chapter2="l-utilisation-de-vos-donnees-dan_informations-legales-et-conditio" target="_self">
-            <img src="/files/live/sites/PE/files/infos-legales/DMR-308.jpg" class="block-item-img pull-left" alt="">
-            <h3 class="block-item-title">L’utilisation de vos données dans le cadre du dispositif du Dispositif de Ressources Mensuelles (DRM)</h3>
-            <div class="block-item-text">Le dispositif relatif aux ressources mensuelles - DRM - est une base de donn&eacute;es comprenant les salaires et les revenus de remplacement, renseign&eacute;e chaque mois par les employeurs et les organismes de protection sociale &eacute;tablis en France. Ce dispositif est un service g&eacute;r&eacute; par la Caisse Nationale d&rsquo;Allocation Vieillesse (CNAV). Il permet &agrave; des entit&eacute;s ext&eacute;rieures, telles que France Travail, de pouvoir r&eacute;cup&eacute;rer des donn&eacute;es d&rsquo;assur&eacute;s sociaux.</div>
-        </a>
-    </article>
-</li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","l-utilisation-de-vos-donnees-daninformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
-    <article class="block-item">
-        <a href="/informations/informations-legales-et-conditio/mentions-d-information-du-traite.html" class="block-item-link"
-           data-chapter1="Scroll_articles"
-           data-chapter2="mentions-d-information-du-traite_informations-legales-et-conditio" target="_self">
-            <img src="/files/live/sites/PE/files/infos-legales/partage-donnes-prestataire-308.jpg" class="block-item-img pull-left" alt="">
-            <h3 class="block-item-title">Mentions d’information du traitement I-MILO</h3>
-            <div class="block-item-text">Mentions et informations l&eacute;gales concernant&nbsp;I-MILO.</div>
-        </a>
-    </article>
-</li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","mentions-d-information-du-traiteinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
-    <article class="block-item">
-        <a href="/informations/informations-legales-et-conditio/donnees-partage-prestataire.html" class="block-item-link"
-           data-chapter1="Scroll_articles"
-           data-chapter2="les-conditions-de-partage-de-vos_informations-legales-et-conditio" target="_self">
-            <img src="/files/live/sites/PE/files/infos-legales/partage-donnes-prestataire-308.jpg" class="block-item-img pull-left" alt="">
-            <h3 class="block-item-title">Les conditions de partage de vos données personnelles avec un prestataire</h3>
-            <div class="block-item-text">France Travail partage vos donn&eacute;es personnelles avec les prestataires habilit&eacute;s &agrave; r&eacute;aliser votre accompagnement vers l&rsquo;emploi : &quot;un emploi stable&quot; (UES).</div>
-        </a>
-    </article>
-</li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","les-conditions-de-partage-de-vosinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
-    <article class="block-item">
-        <a href="/informations/informations-legales-et-conditio/conditions-generales-dutilisatio.html" class="block-item-link"
-           data-chapter1="Scroll_articles"
-           data-chapter2="conditions-generales-dutilisatio_informations-legales-et-conditio" target="_self">
-            <img src="/files/live/sites/PE/files/infos-legales/CGU-308.jpg" class="block-item-img pull-left" alt="">
-            <h3 class="block-item-title">Conditions générales d'utilisation</h3>
-            <div class="block-item-text">Les services du site internet francetravail.fr doivent &ecirc;tre utilis&eacute;s conform&eacute;ment aux pr&eacute;sentes conditions g&eacute;n&eacute;rales d&rsquo;utilisation (CGU).</div>
-        </a>
-    </article>
-</li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","conditions-generales-dutilisatioinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
-    <article class="block-item">
-        <a href="/informations/informations-legales-et-conditio/informations-legales.html" class="block-item-link"
-           data-chapter1="Scroll_articles"
-           data-chapter2="informations-legales_informations-legales-et-conditio" target="_self">
-            <img src="/files/live/sites/PE/files/region/actualite---vignette--264-x-230/france-travail-264x54933.jpg" class="block-item-img pull-left" alt="">
-            <h3 class="block-item-title">Informations légales</h3>
-            <div class="block-item-text">Mentions et informations l&eacute;gales concernant francetravail.fr</div>
-        </a>
-    </article>
-</li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","informations-legalesinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
-    <article class="block-item">
-        <a href="/informations/informations-legales-et-conditio/protection-des-donnees-personnel.html" class="block-item-link"
-           data-chapter1="Scroll_articles"
-           data-chapter2="protection-des-donnees-personnel_informations-legales-et-conditio" target="_self">
-            <img src="/files/live/sites/PE/files/infos-legales/protect-donnees-850.jpg" class="block-item-img pull-left" alt="">
-            <h3 class="block-item-title">Politique de confidentialité - Protection des données personnelles</h3>
-            <div class="block-item-text">Les services du site internet www.francetravail.fr et les applications mobiles sont autoris&eacute;s par les articles R. 5312-38 et suivants du code du travail relatifs au syst&egrave;me d&rsquo;information concernant les demandeurs d&rsquo;emploi et salari&eacute;s mis en &oelig;uvre par France Travail.</div>
-        </a>
-    </article>
-</li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","protection-des-donnees-personnelinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script></ul>
+            <article class="block-item">
+                <a href="/informations/informations-legales-et-conditio/utilisation-donnees-drm.html" class="block-item-link"
+                   data-chapter1="Scroll_articles"
+                   data-chapter2="l-utilisation-de-vos-donnees-dan_informations-legales-et-conditio" target="_self">
+                    <img src="/files/live/sites/PE/files/infos-legales/DMR-308.jpg" class="block-item-img pull-left" alt="">
+                    <h3 class="block-item-title">L’utilisation de vos données dans le cadre du dispositif du Dispositif de Ressources Mensuelles (DRM)</h3>
+                    <div class="block-item-text">Le dispositif relatif aux ressources mensuelles - DRM - est une base de donn&eacute;es comprenant les salaires et les revenus de remplacement, renseign&eacute;e chaque mois par les employeurs et les organismes de protection sociale &eacute;tablis en France. Ce dispositif est un service g&eacute;r&eacute; par la Caisse Nationale d&rsquo;Allocation Vieillesse (CNAV). Il permet &agrave; des entit&eacute;s ext&eacute;rieures, telles que France Travail, de pouvoir r&eacute;cup&eacute;rer des donn&eacute;es d&rsquo;assur&eacute;s sociaux.</div>
+                </a>
+            </article>
+        </li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","l-utilisation-de-vos-donnees-daninformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
+            <article class="block-item">
+                <a href="/informations/informations-legales-et-conditio/mentions-d-information-du-traite.html" class="block-item-link"
+                   data-chapter1="Scroll_articles"
+                   data-chapter2="mentions-d-information-du-traite_informations-legales-et-conditio" target="_self">
+                    <img src="/files/live/sites/PE/files/infos-legales/partage-donnes-prestataire-308.jpg" class="block-item-img pull-left" alt="">
+                    <h3 class="block-item-title">Mentions d’information du traitement I-MILO</h3>
+                    <div class="block-item-text">Mentions et informations l&eacute;gales concernant&nbsp;I-MILO.</div>
+                </a>
+            </article>
+        </li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","mentions-d-information-du-traiteinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
+            <article class="block-item">
+                <a href="/informations/informations-legales-et-conditio/donnees-partage-prestataire.html" class="block-item-link"
+                   data-chapter1="Scroll_articles"
+                   data-chapter2="les-conditions-de-partage-de-vos_informations-legales-et-conditio" target="_self">
+                    <img src="/files/live/sites/PE/files/infos-legales/partage-donnes-prestataire-308.jpg" class="block-item-img pull-left" alt="">
+                    <h3 class="block-item-title">Les conditions de partage de vos données personnelles avec un prestataire</h3>
+                    <div class="block-item-text">France Travail partage vos donn&eacute;es personnelles avec les prestataires habilit&eacute;s &agrave; r&eacute;aliser votre accompagnement vers l&rsquo;emploi : &quot;un emploi stable&quot; (UES).</div>
+                </a>
+            </article>
+        </li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","les-conditions-de-partage-de-vosinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
+            <article class="block-item">
+                <a href="/informations/informations-legales-et-conditio/conditions-generales-dutilisatio.html" class="block-item-link"
+                   data-chapter1="Scroll_articles"
+                   data-chapter2="conditions-generales-dutilisatio_informations-legales-et-conditio" target="_self">
+                    <img src="/files/live/sites/PE/files/infos-legales/CGU-308.jpg" class="block-item-img pull-left" alt="">
+                    <h3 class="block-item-title">Conditions générales d'utilisation</h3>
+                    <div class="block-item-text">Les services du site internet francetravail.fr doivent &ecirc;tre utilis&eacute;s conform&eacute;ment aux pr&eacute;sentes conditions g&eacute;n&eacute;rales d&rsquo;utilisation (CGU).</div>
+                </a>
+            </article>
+        </li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","conditions-generales-dutilisatioinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
+            <article class="block-item">
+                <a href="/informations/informations-legales-et-conditio/informations-legales.html" class="block-item-link"
+                   data-chapter1="Scroll_articles"
+                   data-chapter2="informations-legales_informations-legales-et-conditio" target="_self">
+                    <img src="/files/live/sites/PE/files/region/actualite---vignette--264-x-230/france-travail-264x54933.jpg" class="block-item-img pull-left" alt="">
+                    <h3 class="block-item-title">Informations légales</h3>
+                    <div class="block-item-text">Mentions et informations l&eacute;gales concernant francetravail.fr</div>
+                </a>
+            </article>
+        </li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","informations-legalesinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script><li >
+            <article class="block-item">
+                <a href="/informations/informations-legales-et-conditio/protection-des-donnees-personnel.html" class="block-item-link"
+                   data-chapter1="Scroll_articles"
+                   data-chapter2="protection-des-donnees-personnel_informations-legales-et-conditio" target="_self">
+                    <img src="/files/live/sites/PE/files/infos-legales/protect-donnees-850.jpg" class="block-item-img pull-left" alt="">
+                    <h3 class="block-item-title">Politique de confidentialité - Protection des données personnelles</h3>
+                    <div class="block-item-text">Les services du site internet www.francetravail.fr et les applications mobiles sont autoris&eacute;s par les articles R. 5312-38 et suivants du code du travail relatifs au syst&egrave;me d&rsquo;information concernant les demandeurs d&rsquo;emploi et salari&eacute;s mis en &oelig;uvre par France Travail.</div>
+                </a>
+            </article>
+        </li><script type="text/javascript">$(document).ready(function () {tc_scrollvars={"customVars":{"techno":"jahia","client":"Candidat","pn":"pr003"},"chapters":["Scroll_articles","protection-des-donnees-personnelinformations-legales-et-conditio"],"name":"Editorial_informations","type":"pprint","level2":"9"};addScrollTag("block-item",50,tc_scrollvars);});</script></ul>
 	        </div>
         <!-- cas ajout d'un noeud dans liste -->
     <nav aria-label="" class="text-center">
@@ -779,7 +799,7 @@ document.getElementById("tms_de75f0a8-2d77-4dd9-ac3c-dbf3265a8cbd").parentNode.a
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fermer" title="Fermer">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <span class="modal-title t3" id="PopinInfosArticlesTitle">Tout sur&nbsp;: Candidat</span>
+                <span class="modal-title t3" id="PopinInfosArticlesTitle">Tout sur&nbsp;: Actualités</span>
             </div>
 
             <div class="modal-body">
